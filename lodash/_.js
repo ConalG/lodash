@@ -1,5 +1,5 @@
 const _ = {
-// Clamp method
+    // Clamp method
     clamp(num, lower, upper) {
         if(num >= lower && num <= upper){
             return num;
@@ -19,7 +19,7 @@ const _ = {
     }
 */
 
-//InRange
+    //InRange
     inRange(number, start , end){
         let num = number
         let sValue = start
@@ -40,7 +40,66 @@ const _ = {
 
             return false
         }
+    },
+
+    //Words 
+    words(string){
+        let result = string.split(' ')
+        return result;
+    },
+
+    //Pad
+    pad(string, length){
+    if(length > string.length){
+        let fPad = 0
+        let bPad = 0
+        let rLength = length - string.length 
+        if(rLength%2 === 0){
+            fPad = rLength/2
+            bPad = rLength/2
+        }
+        else{
+            fPad = rLength/2
+            bPad = rLength/2 + 1
+        }
+        const paddedString = ' '.repeat(fPad) + string + ' '.repeat(bPad)
+        return paddedString
+        }
+    else{
+        return string
+        }
+    },
+
+    //Has
+    has(object, key){
+        hasKey = object[key] !== undefined
+        return hasKey
+    },
+
+    //Invert
+    invert(object){
+        let invertedObject = {}
+        for(let key in object){
+            const originalValue = object[key]
+            invertedObject = {originalValue : key}
+        }
+        return invertedObject
+    },
+
+    //Find Key
+    findKey(object, pfunc){
+        for(let key in object){
+            let value = object[key]
+            pReturnValue = pfunc(value)
+            if(pReturnValue){
+                return key
+            }
+
+        }
+        undefined
+        return undefined
     }
+
 };
 
 //_.inRange(2, 1, 3)

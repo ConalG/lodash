@@ -98,6 +98,32 @@ const _ = {
         }
         undefined
         return undefined
+    },
+
+    //Drop
+    drop(arr, num = 1){
+        droppedArray = arr.slice(num, arr.length)
+        return droppedArray
+    },
+
+    //DropWhile
+    dropWhile(arr, pfunc){
+        const cb = (element, index) => {
+            return !pfunc(element, index, arr)
+        }
+        let dropNum = arr.findIndex(cb);
+        let droppedArray = this.drop(arr, dropNum)
+        return droppedArray
+    },
+
+    //Chunk
+    chunk(arr, size = 1){
+        let arrChunks = [];
+        for( let i = 0; i < arr.length; i += size){
+            let arrChunk = arr.slice(i, i+size);
+            arrChunks.push(arrChunk);
+        }
+        return arrChunks
     }
 
 };
